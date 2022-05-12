@@ -149,7 +149,7 @@ class AtakBridge:
         try: # TODO Use a non-blocking read of the socket
             cotresponse = self.takserver.readcot(readtimeout=1) # This is a blocking read for 1 second.
             cot_xml = cotresponse[0]
-            # rospy.loginfo("COT XML:\n%s\n" %(cot_xml))
+            rospy.loginfo("COT XML:\n%s\n" %(cot_xml))
 
             if (len(cot_xml)>1):
                 rospy.loginfo("COT XML2:\n%s\n" %(cot_xml))
@@ -168,7 +168,8 @@ class AtakBridge:
             msg_type = self.takmsg_tree.getroot().attrib['type']
             if msg_type == 'b-m-r':
                 route_callsign = self.takmsg_tree.find("./detail/contact").attrib['callsign'].lower()
-                if self.my_callsign in route_callsign: 
+#                if self.my_callsign in route_callsign: 
+                if (True): 
                     rospy.loginfo("============> REMARKS ARE: %s\n " %route_callsign)
                     robot_path = Path()
                     robot_path.header.stamp = rospy.Time.now()
@@ -201,7 +202,8 @@ class AtakBridge:
                 msg_uid = msg_root.attrib['uid']
                 robot_uid = self.robot_name + '_goto'
                 rospy.loginfo("Mesage UID: %s",msg_uid)
-                if (self.robot_msg_uid == msg_uid):
+#                if (self.robot_msg_uid == msg_uid):
+                if (True):
                     lat = float(self.takmsg_tree.find("./point").attrib['lat'])
                     lon = float(self.takmsg_tree.find("./point").attrib['lon'])
                     detail = self.takmsg_tree.find("./detail").find("./remarks").text.split(',')

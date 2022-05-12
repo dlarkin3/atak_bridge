@@ -140,7 +140,7 @@ class takcot():
             response = ''
             try:
                 while True:
-                    print("Response " + response)
+#                    print("Response " + response)
                     response += self.sock.recv(2049).decode('utf-8')
 
             except socket.timeout:
@@ -168,14 +168,15 @@ class takcot():
             print("readcot failed: %s" % (sys.exc_info()[0]))
             #return "",frag
 
-        # print("cotbuff length is: " + str(len(cotbuff)))
-        # print("raw cotbuff:")
-        # print(cotbuff)
+#        print("cotbuff length is: " + str(len(cotbuff)))
+#        print("raw cotbuff:")
+#        print(cotbuff)
 
         # OK, we read something, now prepend the frag and clean it up
         if cotbuff:
             #cotbuff = bytes(frag,'utf-8') + cotbuff
-            cotbuff = frag + cotbuff.decode('utf-8')
+#            cotbuff = frag + cotbuff.decode('utf-8')
+            cotbuff = frag + cotbuff
         else:
             #cotbuff = bytes(frag,'utf-8')
             cotbuff = frag
@@ -185,10 +186,10 @@ class takcot():
 
         cotbuff=cotbuff.replace("\n","")
 
-        #print("cleaned cotbuff is:")
-        #print(cotbuff)
-        #print(type(cotbuff))
-        #print()
+#        print("cleaned cotbuff is:")
+#        print(cotbuff)
+#        print(type(cotbuff))
+#        print()
 
         #cots="nothing"
         count = 1
