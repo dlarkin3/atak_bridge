@@ -52,10 +52,7 @@ my_call = 'DEFAULT/PLEASE_SET'
 
 
 class mkcot:
-        
-    # ==============================================================================================================
-        
-    @staticmethod
+
     def mkcot(
          cot_stale=5, cot_how="m-g"
         , cot_lat=41.390638 , cot_lon=-73.953104, cot_hae=9999999
@@ -124,7 +121,7 @@ class mkcot:
             "ce": str(cot_ce),
             "le": str(cot_le)
         }
-        #-----------------------------------------------------
+
         # now the sub-elements for the detail block
         if not tgt_call:
             precision_attr = {
@@ -193,7 +190,7 @@ class mkcot:
             #print("iconattr: ",icon_attr)
         else:
             icon_attr = None
-        
+
         if color:
             # color_attr = { "argb": '-8454017' }
             color_attr = { "argb": '-1' }
@@ -299,3 +296,4 @@ class mkcot:
         #cot_xml = et.tostring(cot)
         #print(cot_xml)
         return cot_xml
+

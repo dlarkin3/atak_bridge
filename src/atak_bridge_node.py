@@ -1,7 +1,7 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
-from __future__ import (absolute_import, division,
-                        print_function, unicode_literals)
+#from __future__ import (absolute_import, division,
+#                        print_function, unicode_literals)
 
 '''
   <node type="static_transform_publisher" pkg="tf2_ros" name="dummy2_utm_frame" args="587361 4582574 0 0 0 1.571 utm $(arg name)/map" />
@@ -58,7 +58,7 @@ class AtakBridge:
         self.goal_pub = rospy.Publisher("goto_goal", PoseDescriptionStamped, queue_size=10)
         self.path_pub = rospy.Publisher("atak_path", Path, queue_size=10)
         rospy.Subscriber("object_location", PoseDescriptionArray, self.objects_location_cb)
-
+        rospy.loginfo("===   Starting ATAK Bridge with python version: %s " %(sys.version))
         rospy.loginfo("===   Attempting to lookup a transform from %s to %s" %('utm', self.baselink_frame))
         self.tf1_listener = tf.TransformListener()
         self.wait_for_transform()
